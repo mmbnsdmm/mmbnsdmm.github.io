@@ -1,6 +1,6 @@
 {
-  "name": "vuecli3",
-  "version": "0.1.0",
+  "name": "xuba.github.io",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",

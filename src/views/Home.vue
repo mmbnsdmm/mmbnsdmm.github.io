@@ -1,5 +1,11 @@
 <template>
   <div class="home">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">123</div>
+        <div class="col-lg-6">123</div>
+      </div>
+    </div>
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>

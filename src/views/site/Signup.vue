@@ -1,17 +1,13 @@
 <template>
     <div class="login">
         <mt-header :title="title">
-            <router-link to="/signup" slot="right">
-                <mt-button>注册</mt-button>
+            <router-link to="/login" slot="right">
+                <mt-button>登录</mt-button>
             </router-link>
         </mt-header>
         <div id="nav">
             <router-link to="/">Home</router-link>
             <router-link to="/about">About</router-link>
-        </div>
-        <div class="login-form">
-            <mt-field label="用户名" placeholder="请输入用户名"></mt-field>
-            <mt-field label="密码" placeholder="请输入密码" type="password"></mt-field>
         </div>
     </div>
 </template>
@@ -21,7 +17,7 @@
         name: "Login",
         data: function(){
             return {
-                title: "登录",
+                title: "注册",
             };
         },
         mounted: function () {

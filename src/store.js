@@ -11,7 +11,7 @@ const v = new Vuex.Store({
         },
         meta: {
             title: "首页",
-            keywords: "关键字",
+            keywords: "续吧 故事汇 YY故事汇",
             description: "描述"
         }
     },

@@ -7,20 +7,22 @@ let routes = [
     {
         path: '/',
         name: 'home',
-        meta: {title:'续吧',keywords:'续吧 故事汇 YY故事汇',description:'续吧'},
         component: () => import(/* webpackChunkName: "about" */ './views/site/Home.vue'),
     },
     {
         path: '/about',
         name: 'about',
-        meta: {title:'关于-续吧',keywords:'续吧 故事汇 YY故事汇',description:'续吧'},
         component: () => import( './views/site/About.vue'),
     },
     {
         path: '/login',
         name: 'login',
-        meta: {title:'登录-续吧',keywords:'续吧 故事汇 YY故事汇',description:'续吧'},
         component: () => import('./views/site/Login.vue'),
+    },
+    {
+        path: '/signup',
+        name: 'Signup',
+        component: () => import('./views/site/Signup.vue'),
     },
 ];
 
@@ -28,30 +30,22 @@ const r = new Router({
     routes: routes
 });
 
-// r.beforeEach(function (to, from, next) {
-//     let user = state.user;
-//     let no_need_login_routes = ['/login', '/signup'];
-//     let to_login = false;
-//     if (!user.id){
-//         if (!no_need_login_routes.find(function (v) {
-//             return v === to.path;
-//         })){
-//             to_login = true;
-//         }
-//     }
-//     if (to_login){
-//         next('/login');
-//     } else {
-//         next();
-//     }
-// });
-
-// r.afterEach(function (to) {
-//     let meta = state.meta;
-//     meta.title = to.meta.title;
-//     meta.keywords = to.meta.keywords;
-//     meta.description = to.meta.description;
-//     document.title = meta.title;
-// });
+r.beforeEach(function (to, from, next) {
+    let token = localStorage.token;
+    let no_need_login_routes = ['/login', '/signup'];
+    let to_login = false;
+    if (!token){
+        if (!no_need_login_routes.find(function (v) {
+            return v === to.path;
+        })){
+            to_login = true;
+        }
+    }
+    if (to_login){
+        next('/login');
+    } else {
+        next();
+    }
+});
 
 export default r

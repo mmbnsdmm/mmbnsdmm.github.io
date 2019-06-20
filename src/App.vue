@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <div class="header">
-            <mt-header fixed :title="title">
+            <mt-header  :title="title">
                 <router-link to="/" slot="left">
                     <mt-button icon="back"></mt-button>
                 </router-link>

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Lodash from 'lodash'
 import store from './store'
 
 Vue.use(Router);
@@ -34,14 +33,19 @@ r.beforeEach(function (to, from, next) {
     document.title = to.meta.title;
     let user = store.state.user;
     let no_need_login_routes = ['/login', '/signup'];
+    let to_login = false;
     if (!user.id){
-        Lodash.forEach(no_need_login_routes ,function (v) {
-            if (v !== to.path){
-                next('/login');
-            }
-        })
+        if (!no_need_login_routes.find(function (v) {
+            return v === to.path;
+        })){
+            to_login = true;
+        }
     }
-    next()
+    if (to_login){
+        next('/login');
+    } else {
+        next();
+    }
 });
 
 export default r

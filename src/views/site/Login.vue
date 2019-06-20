@@ -1,6 +1,6 @@
 <template>
-    <div>
-        login
+    <div class="login">
+        gsadfsf
     </div>
 </template>
 

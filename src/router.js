@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import store from './store'
 
 Vue.use(Router);
 
@@ -29,23 +28,30 @@ const r = new Router({
     routes: routes
 });
 
-r.beforeEach(function (to, from, next) {
-    document.title = to.meta.title;
-    let user = store.state.user;
-    let no_need_login_routes = ['/login', '/signup'];
-    let to_login = false;
-    if (!user.id){
-        if (!no_need_login_routes.find(function (v) {
-            return v === to.path;
-        })){
-            to_login = true;
-        }
-    }
-    if (to_login){
-        next('/login');
-    } else {
-        next();
-    }
-});
+// r.beforeEach(function (to, from, next) {
+//     let user = state.user;
+//     let no_need_login_routes = ['/login', '/signup'];
+//     let to_login = false;
+//     if (!user.id){
+//         if (!no_need_login_routes.find(function (v) {
+//             return v === to.path;
+//         })){
+//             to_login = true;
+//         }
+//     }
+//     if (to_login){
+//         next('/login');
+//     } else {
+//         next();
+//     }
+// });
+
+// r.afterEach(function (to) {
+//     let meta = state.meta;
+//     meta.title = to.meta.title;
+//     meta.keywords = to.meta.keywords;
+//     meta.description = to.meta.description;
+//     document.title = meta.title;
+// });
 
 export default r

@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <div class="header">
-            <mt-header  :title="title">
+            <mt-header :title="title">
                 <router-link to="/" slot="left">
                     <mt-button icon="back"></mt-button>
                 </router-link>
@@ -17,13 +17,15 @@
 </template>
 
 <script>
-    import store from './store'
     export default {
         name: 'App',
         data: function () {
             return {
-                title: store.state.meta.title
+                title: 'title'
             }
+        },
+        mounted: function () {
+            console.log(this.$db)
         }
     }
 </script>

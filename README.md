@@ -7,7 +7,7 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 ## vue ui
 ```
-npm install -g @vue/cli
+cnpm install -g @vue/cli
 ```
 
 ## Project setup

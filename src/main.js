@@ -11,9 +11,14 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'mint-ui/lib/style.css'
 import 'vue-icon-font'
 
+import Tools from '@/components/wodrow/Tools'
+
 Vue.config.productionTip = false;
 
 Vue.use(MintUI);
+Vue.use(Tools);
+
+Vue.prototype.Tools = Tools;
 
 new Vue({
     router,
@@ -22,6 +27,7 @@ new Vue({
     Axios,
     BootstrapVue,
     MintUI,
+    Tools,
     render: function(h){
         return h(App);
     }

@@ -26,6 +26,7 @@
         },
         mounted: function () {
             document.title = this.title;
+            this.Tools.test()
         },
     }
 </script>

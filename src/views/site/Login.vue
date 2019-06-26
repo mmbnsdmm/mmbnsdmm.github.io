@@ -10,8 +10,8 @@
             <router-link to="/about">About</router-link>
         </div>
         <div class="login-form">
-            <mt-field label="用户名" placeholder="请输入用户名"></mt-field>
-            <mt-field label="密码" placeholder="请输入密码" type="password"></mt-field>
+            <mt-field label="用户名" placeholder="用户名|邮箱"></mt-field>
+            <mt-field label="密码" placeholder="密码" type="password"></mt-field>
         </div>
     </div>
 </template>
@@ -26,7 +26,6 @@
         },
         mounted: function () {
             document.title = this.title;
-            this.Tools.test()
         },
     }
 </script>

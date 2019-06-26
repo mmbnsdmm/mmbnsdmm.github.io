@@ -4,6 +4,7 @@ import store from './store'
 import router from './router'
 import Lodash from 'lodash'
 import Axios from 'axios'
+import VeeValidate from 'vee-validate'
 import BootstrapVue from 'bootstrap-vue'
 import MintUI from 'mint-ui'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -15,6 +16,7 @@ import Tools from '@/components/wodrow/Tools'
 
 Vue.config.productionTip = false;
 
+Vue.use(VeeValidate);
 Vue.use(MintUI);
 Vue.use(Tools);
 
@@ -25,6 +27,7 @@ new Vue({
     store,
     Lodash,
     Axios,
+    VeeValidate,
     BootstrapVue,
     MintUI,
     Tools,

@@ -10,7 +10,8 @@
             <router-link to="/about">About</router-link>
         </div>
         <div class="login-form">
-            <mt-field label="用户名" placeholder="用户名|邮箱"></mt-field>
+            <mt-field label="用户名" name="username" placeholder="用户名|邮箱" v-validate="'required|email'"></mt-field>
+            <span>{{ errors.first('username') }}</span>
             <mt-field label="密码" placeholder="密码" type="password"></mt-field>
         </div>
     </div>

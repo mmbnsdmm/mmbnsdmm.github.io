@@ -1,9 +1,8 @@
-
 <script>
     export default {
         name: 'Tools',
-        test: function(){
-            console.log(123);
+        log: function(obj){
+            window.console.log(obj);
         }
     }
 </script>

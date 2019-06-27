@@ -10,24 +10,29 @@
             <router-link to="/about">About</router-link>
         </div>
         <div class="login-form">
-            <mt-field label="用户名" placeholder="用户名|邮箱"></mt-field>
+            <mt-field label="用户名" placeholder="用户名"></mt-field>
             <mt-field label="密码" placeholder="密码" type="password"></mt-field>
         </div>
     </div>
 </template>
 
 <script>
-    export default {
-        name: "Login",
-        data: function(){
-            return {
-                title: "登录",
-            };
-        },
-        mounted: function () {
-            document.title = this.title;
-        },
+export default {
+    name: "Login",
+    data: function(){
+        return {
+            title: "登录",
+        };
+    },
+    mounted: function () {
+        document.title = this.title;
+        this.axios.get('https://mmbnsdmm.github.io/conf/config.js').then(function(response){
+            window.console.log(response.data);
+        }).catch(function (error) {
+            window.console.log(error);
+        });
     }
+}
 </script>
 
 <style scoped>

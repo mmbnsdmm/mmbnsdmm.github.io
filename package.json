@@ -13,6 +13,7 @@
     "core-js": "^2.6.5",
     "lodash": "^4.17.11",
     "mint-ui": "^2.2.13",
+    "vee-validate": "^2.2.11",
     "vue": "^2.6.10",
     "vue-axios": "^2.1.4",
     "vue-icon-font": "^1.0.4",

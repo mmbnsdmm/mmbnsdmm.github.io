@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
 import router from './router'
+import "./validate"
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import MintUI from 'mint-ui'

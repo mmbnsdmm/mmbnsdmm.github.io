@@ -14,9 +14,6 @@ import 'vue-icon-font'
 import Tools from '@/components/wodrow/Tools'
 import Config from '@/conf/Config'
 
-Config.getApiBaseUrl();
-axios.defaults.baseURL = Config.getApiBaseUrl();
-
 Vue.config.productionTip = false;
 
 Vue.prototype.tools = Tools;
@@ -24,6 +21,9 @@ Vue.prototype.tools = Tools;
 Vue.use(MintUI);
 Vue.use(Tools);
 Vue.use(VueAxios, axios);
+
+Config.getApiBaseUrl()
+axios.defaults.baseURL = Config.api_base_url;
 
 new Vue({
     router,

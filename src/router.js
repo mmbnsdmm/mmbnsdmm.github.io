@@ -31,7 +31,7 @@ const r = new Router({
 });
 
 r.beforeEach(function (to, from, next) {
-    let token = localStorage.token;
+    let token = window.localStorage.token;
     let no_need_login_routes = ['/login', '/signup'];
     let to_login = false;
     if (!token){

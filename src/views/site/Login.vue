@@ -5,30 +5,72 @@
                 <mt-button>注册</mt-button>
             </router-link>
         </mt-header>
-        <div id="nav">
-            <router-link to="/">Home</router-link>
-            <router-link to="/about">About</router-link>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="login-form">
+                        <mt-field label="用户名" placeholder="用户名" name="username" v-model="username" v-validate="'required'" state=""></mt-field>
+                        <mt-field label="密码" placeholder="密码" name="password" v-model="password" type="password" v-validate="'required'" state=""></mt-field>
+                        <mt-button type="primary" size="large" @click="login">登录</mt-button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="login-form">
-            <mt-field label="用户名" name="username" placeholder="用户名" v-validate="'required'"></mt-field>
-            <span>{{ errors.first('username') }}</span>
-            <mt-field label="密码" placeholder="密码" type="password"></mt-field>
-        </div>
+        
     </div>
 </template>
 
 <script>
-    export default {
-        name: "Login",
-        data: function(){
-            return {
-                title: "登录",
-            };
+import { Toast } from 'mint-ui'
+export default {
+    name: "Login",
+    data: function(){
+        return {
+            title: "登录",
+            username: "",
+            password: ""
+        };
+    },
+    mounted: function () {
+        document.title = this.title;
+        if(window.localStorage.token){
+            this.$router.push({path:'/'});
+        }
+    },
+    methods: {
+        login: function(){
+            if (!this.username){
+                this.t("用户名不能为空");
+                return false;
+            }
+            if (!this.password){
+                this.t("密码不能为空");
+                return false;
+            }
+            let _this = this;
+            this.axios.get("/v2/site/user/login", {
+                params: {
+                    username: _this.username,
+                    password: _this.password
+                }
+            }).then(function(response){
+                if (response.data.code !== 200){
+                    this.t(response.data.message);
+                    return false;
+                }
+                window.localStorage.token = response.data.data.token;
+                window.localStorage.key = response.data.data.key;
+            });
         },
-        mounted: function () {
-            document.title = this.title;
-        },
+        t: function(msg){
+            Toast({
+                message: msg,
+                position: 'bottom',
+                duration: 2000
+            });
+        }
     }
+}
 </script>
 
 <style scoped>

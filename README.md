@@ -10,5 +10,5 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 cnpm install -g @vue/cli
 ```
 
-### Customize configuration
+## Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

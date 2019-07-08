@@ -1,10 +1,5 @@
 <template>
     <div class="login">
-        <mt-header :title="title">
-            <router-link to="/signup" slot="right">
-                <mt-button>注册</mt-button>
-            </router-link>
-        </mt-header>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
@@ -33,9 +28,15 @@ export default {
     },
     mounted: function () {
         document.title = this.title;
-        if(window.localStorage.token){
+        if(this.Tools.getItem("token")){
             this.$router.push({path:'/'});
         }
+        this.$parent.header = {
+            title: this.title,
+            to: "/signup",
+            slot: "right",
+            button: "注册"
+        };
     },
     methods: {
         login: function(){
@@ -58,8 +59,9 @@ export default {
                     this.t(response.data.message);
                     return false;
                 }
-                window.localStorage.token = response.data.data.token;
-                window.localStorage.key = response.data.data.key;
+                _this.Tools.setItem("token", response.data.data.token);
+                _this.Tools.setItem("key", response.data.data.key);
+                _this.$router.push({path:'/'});
             });
         },
         t: function(msg){

@@ -21,6 +21,12 @@ export default {
         if(window.localStorage.token){
             this.$router.push({path:'/'});
         }
+        this.$parent.header = {
+            title: this.title,
+            to: "/login",
+            slot: "right",
+            button: "登录"
+        };
     },
 }
 </script>

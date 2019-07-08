@@ -47,24 +47,24 @@
         height: 100%
         /*background: url("~@/assets/bg1.gif") repeat*/
 
-        p
-            text-indent: 2em
+    p
+        text-indent: 2em
 
-        .wrap
-            min-height: 100%
-            height: auto
-            margin: 0 auto -60px
-            padding: 0 0 60px
+    .wrap
+        min-height: 100%
+        height: auto
+        margin: 0 auto -60px
+        padding: 0 0 60px
 
-        .wrap > .container
-            padding: 70px 15px 20px
+    .wrap > .container
+        padding: 70px 15px 20px
 
-        .footer
-            height: 60px
-            border-top: 1px solid #ddd
-            padding-top: 20px
+    .footer
+        height: 60px
+        border-top: 1px solid #ddd
+        padding-top: 20px
 
-        .mt20
-            margin-top: 20px
+    .mt20
+        margin-top: 20px
 
 </style>

@@ -3,37 +3,19 @@
         <b-row>
             <b-col cols="12">
                 <b-tabs>
-                    <b-tab title="Tab 1" active>
+                    <b-tab title="好友" active>
                         <mt-index-list>
                             <mt-index-section index="A">
                                 <mt-cell title="Aaron"></mt-cell>
-                                <mt-cell title="Alden"></mt-cell>
-                                <mt-cell title="Austin"></mt-cell>
-                            </mt-index-section>
-                            <mt-index-section index="B">
-                                <mt-cell title="Baldwin"></mt-cell>
-                                <mt-cell title="Braden"></mt-cell>
-                            </mt-index-section>
-                            <mt-index-section index="Z">
-                                <mt-cell title="Zack"></mt-cell>
-                                <mt-cell title="Zane"></mt-cell>
                             </mt-index-section>
                         </mt-index-list>
                     </b-tab>
-                    <b-tab title="Tab 2">
+                    <b-tab title="群聊">
                         <mt-index-list>
                             <mt-index-section index="A">
                                 <mt-cell title="Aaron"></mt-cell>
                                 <mt-cell title="Alden"></mt-cell>
                                 <mt-cell title="Austin"></mt-cell>
-                            </mt-index-section>
-                            <mt-index-section index="B">
-                                <mt-cell title="Baldwin"></mt-cell>
-                                <mt-cell title="Braden"></mt-cell>
-                            </mt-index-section>
-                            <mt-index-section index="Z">
-                                <mt-cell title="Zack"></mt-cell>
-                                <mt-cell title="Zane"></mt-cell>
                             </mt-index-section>
                         </mt-index-list>
                     </b-tab>

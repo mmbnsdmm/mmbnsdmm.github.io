@@ -85,11 +85,13 @@
                     }
                 }
             },
-            wsOnMessage: function () {
+            wsOnMessage: function (evt) {
                 this.Tools.log("message");
+                this.Tools.log(evt.data);
             },
             wsOnOpen: function () {
                 this.Tools.log("open");
+                this.Tools.ws_io.send("testtest");
             },
             wsOnError: function () {
                 this.Tools.log("error");

@@ -1,7 +1,7 @@
 <template>
     <div class="message">
         <b-row>
-            <b-col cols="12">
+            <b-col cols="12" v-show="false">
                 <b-tabs>
                     <b-tab title="好友" active>
                         <mt-index-list>
@@ -21,6 +21,9 @@
                     </b-tab>
                 </b-tabs>
             </b-col>
+            <b-col cols="12">
+                {{msgs}}
+            </b-col>
         </b-row>
     </div>
 </template>
@@ -31,6 +34,7 @@
         data: function(){
             return {
                 title: "消息",
+                msgs: null,
             }
         },
         mounted: function(){

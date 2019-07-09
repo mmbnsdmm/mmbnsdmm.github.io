@@ -103,10 +103,11 @@
             window.document.title = this.title;
             this.$parent.header = {
                 title: this.title,
-                to: "/logout",
-                slot: "right",
-                button: "注销"
+                lto: "/",
+                rto: "/logout",
+                rbutton: "注销"
             };
+            this.$parent.mt_tabbar_dispaly =true;
         },
         components: {},
     }

@@ -33,10 +33,11 @@ export default {
         }
         this.$parent.header = {
             title: this.title,
-            to: "/signup",
-            slot: "right",
-            button: "注册"
+            lto: "/",
+            rto: "/signup",
+            rbutton: "注册"
         };
+        this.$parent.mt_tabbar_dispaly =false;
     },
     methods: {
         login: function(){

@@ -23,10 +23,11 @@ export default {
         }
         this.$parent.header = {
             title: this.title,
-            to: "/login",
-            slot: "right",
-            button: "登录"
+            lto: "/",
+            rto: "/login",
+            rbutton: "登录"
         };
+        this.$parent.mt_tabbar_dispaly =false;
     },
 }
 </script>

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Tools from '@/components/wodrow/Tools'
+import Config from '@/conf/Config'
 
 Vue.use(Router);
 
@@ -37,10 +38,9 @@ r.beforeEach(function (to, from, next) {
         Tools.delItem("key");
     }
     let token = Tools.getItem("token");
-    let no_need_login_routes = ['/login', '/signup'];
     let to_login = false;
     if (!token){
-        if (!no_need_login_routes.find(function (v) {
+        if (!Config.no_need_login_routes.find(function (v) {
             return v === to.path;
         })){
             to_login = true;

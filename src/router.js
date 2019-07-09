@@ -26,6 +26,11 @@ let routes = [
         name: 'Signup',
         component: () => import('./views/site/Signup.vue'),
     },
+    {
+        path: '/message',
+        name: 'Message',
+        component: () => import('./views/msg/Message.vue'),
+    },
 ];
 
 const r = new Router({

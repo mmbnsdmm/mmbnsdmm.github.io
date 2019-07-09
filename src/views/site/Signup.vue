@@ -28,6 +28,9 @@ export default {
             rbutton: "登录"
         };
         this.$parent.mt_tabbar_dispaly =false;
+        if (this.Tools.ws_io) {
+            this.Tools.ws_io.close();
+        }
     },
 }
 </script>

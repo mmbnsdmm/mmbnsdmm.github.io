@@ -1,6 +1,7 @@
 <script>
     export default {
         name: 'Tools',
+        ws_io : null,
         log: function(obj){
             window.console.log(obj);
         },

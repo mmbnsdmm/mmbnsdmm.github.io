@@ -38,6 +38,9 @@ export default {
             rbutton: "注册"
         };
         this.$parent.mt_tabbar_dispaly =false;
+        if (this.Tools.ws_io) {
+            this.Tools.ws_io.close();
+        }
     },
     methods: {
         login: function(){
@@ -62,6 +65,8 @@ export default {
                 }
                 _this.Tools.setItem("token", response.data.data.token);
                 _this.Tools.setItem("key", response.data.data.key);
+                _this.$parent.selects = "home";
+                _this.$parent.initWs();
                 _this.$router.push({path:'/'});
             });
         },

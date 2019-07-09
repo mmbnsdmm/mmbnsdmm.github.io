@@ -21,19 +21,19 @@
             </div>
         </footer>
         <mt-tabbar v-model="selects" fixed v-show="mt_tabbar_dispaly">
-            <mt-tab-item id="外卖">
+            <mt-tab-item id="home">
                 <img slot="icon" src="~@/assets/logo.png">
                 首页
             </mt-tab-item>
-            <mt-tab-item id="订单">
+            <mt-tab-item id="message">
                 <img slot="icon" src="~@/assets/logo.png">
                 消息
             </mt-tab-item>
-            <mt-tab-item id="发现">
+            <mt-tab-item id="found">
                 <img slot="icon" src="~@/assets/logo.png">
                 发现
             </mt-tab-item>
-            <mt-tab-item id="我的">
+            <mt-tab-item id="ucenter">
                 <img slot="icon" src="~@/assets/logo.png">
                 我的
             </mt-tab-item>
@@ -59,8 +59,48 @@
                 selects: ""
             }
         },
-        mounted:function () {
+        watch: {
+            selects: {
+                handler: function (v) {
+                    let r = "/";
+                    if (v !== "home") {
+                        r = r + v;
+                    }
+                    this.$router.push({path: r});
+                }
+            }
+        },
+        methods: {
+            initWs: function () {
+                if (this.Tools.getItem("token")) {
+                    if ('WebSocket' in window) {
+                        this.Tools.ws_io = new WebSocket("ws://127.0.0.1:9501/");
+                        this.Tools.ws_io.onopen = this.wsOnOpen;
+                        this.Tools.ws_io.onmessage = this.wsOnMessage;
+                        this.Tools.ws_io.onerror = this.wsOnError;
+                        this.Tools.ws_io.onclose = this.wsClose;
+                    } else {
+                        document.write('你的浏览器不支持WebSocket');
+                        process.exit();
+                    }
+                }
+            },
+            wsOnMessage: function () {
+                this.Tools.log("message");
+            },
+            wsOnOpen: function () {
+                this.Tools.log("open");
+            },
+            wsOnError: function () {
+                this.Tools.log("error");
+            },
+            wsClose: function () {
+                this.Tools.log("close");
+            }
+        },
+        mounted: function () {
             window.document.title = this.title;
+            this.initWs();
         }
     }
 </script>
@@ -70,24 +110,24 @@
         height: 100%
         /*background: url("~@/assets/bg1.gif") repeat*/
 
-    p
-        text-indent: 2em
+        p
+            text-indent: 2em
 
-    .wrap
-        min-height: 100%
-        height: auto
-        margin: 0 auto -50px
-        padding: 0 0 50px
+        .wrap
+            min-height: 100%
+            height: auto
+            margin: 0 auto -50px
+            padding: 0 0 50px
 
-    .wrap > .container
-        padding: 70px 15px 20px
+        .wrap > .container
+            padding: 50px 15px 20px
 
-    .footer
-        height: 50px
-        border-top: 1px solid #ddd
-        padding-top: 0px
+        .footer
+            height: 50px
+            border-top: 1px solid #ddd
+            padding-top: 0px
 
-    .mt20
-        margin-top: 20px
+        .mt20
+            margin-top: 20px
 
 </style>

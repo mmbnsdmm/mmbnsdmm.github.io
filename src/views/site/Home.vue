@@ -107,6 +107,7 @@
                 rto: "/logout",
                 rbutton: "注销"
             };
+            this.$parent.selects = "home";
             this.$parent.mt_tabbar_dispaly =true;
         },
         components: {},

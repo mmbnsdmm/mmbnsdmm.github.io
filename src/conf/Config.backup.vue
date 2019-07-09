@@ -22,6 +22,7 @@ export default {
             });
             _this.api_base_url = window.sessionStorage.api_base_url;
         }
-    }
+    },
+    no_need_login_routes: ['/login', '/signup']
 }
 </script>

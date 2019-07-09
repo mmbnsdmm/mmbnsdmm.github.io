@@ -12,7 +12,14 @@
     // @ is an alias to /src
 
     export default {
-        name: "Test"
+        name: "Test",
+        mounted: function () {
+            this.$nextTick(()=>{
+                setTimeout(function(){
+                    // Jquery('.mint-navbar>.mint-tab-item:eq(0)').trigger('click');
+                }, 1000);
+            });
+        }
     }
 </script>
 

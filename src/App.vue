@@ -87,7 +87,7 @@
             },
             wsOnMessage: function (evt) {
                 this.Tools.log("message");
-                this.Tools.log(evt.data);
+                this.Tools.log(evt);
             },
             wsOnOpen: function () {
                 this.Tools.log("open");

@@ -24,6 +24,14 @@
             <b-col cols="12">
                 {{msgs}}
             </b-col>
+            <b-col cols="12">
+                <div class="chatbox">
+                    <div class="list">
+                        12
+                    </div>
+                    <div class="send"></div>
+                </div>
+            </b-col>
         </b-row>
     </div>
 </template>
@@ -31,13 +39,13 @@
 <script>
     export default {
         name: "Message",
-        data: function(){
+        data: function () {
             return {
                 title: "消息",
                 msgs: null,
             }
         },
-        mounted: function(){
+        mounted: function () {
             window.document.title = this.title;
             this.$parent.header = {
                 title: this.title,
@@ -46,11 +54,13 @@
                 rbutton: "注销"
             };
             this.$parent.selects = "message";
-            this.$parent.mt_tabbar_dispaly =true;
+            this.$parent.mt_tabbar_dispaly = true;
         },
     }
 </script>
 
-<style scoped>
-
+<style lang="sass">
+    .chatbox
+        height: 100%
+        background: #ccc
 </style>

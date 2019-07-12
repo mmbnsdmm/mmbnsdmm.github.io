@@ -74,7 +74,7 @@
             initWs: function () {
                 if (this.Tools.getItem("token")) {
                     if ('WebSocket' in window) {
-                        this.Tools.ws_io = new WebSocket("ws://127.0.0.1:9501/");
+                        this.Tools.ws_io = new WebSocket("ws://127.0.0.1:9502?token=" + this.Tools.getItem("token"));
                         this.Tools.ws_io.onopen = this.wsOnOpen;
                         this.Tools.ws_io.onmessage = this.wsOnMessage;
                         this.Tools.ws_io.onerror = this.wsOnError;
@@ -91,13 +91,22 @@
             },
             wsOnOpen: function () {
                 this.Tools.log("open");
-                this.Tools.ws_io.send("testtest");
+                this.Tools.ws_io.send(JSON.stringify({test: "testtest"}));
             },
             wsOnError: function () {
                 this.Tools.log("error");
             },
             wsClose: function () {
                 this.Tools.log("close");
+                var ws = this.Tools.ws_io;
+                let _this = this;
+                var timer = setTimeout(function () {
+                    if (ws.readyState == 2 || ws.readyState == 3) {
+                        _this.initWs();
+                    } else if (ws.readyState == 1) {
+                        clearTimeout(timer);
+                    }
+                }, 500);
             }
         },
         mounted: function () {

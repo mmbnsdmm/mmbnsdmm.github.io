@@ -116,10 +116,13 @@
     }
 </script>
 
-<style lang="sass">
+<style lang="stylus">
+    @import "~@/colorui/main.css";
+    @import "~@/colorui/icon.css";
+
     html, body, #app
         height: 100%
-        /*background: url("~@/assets/bg1.gif") repeat*/
+        /*background: url("~@/assets/logo.png") repeat*/
 
         p
             text-indent: 2em
@@ -136,7 +139,7 @@
         .footer
             height: 50px
             border-top: 1px solid #ddd
-            padding-top: 0px
+            padding-top: 0
 
         .mt20
             margin-top: 20px

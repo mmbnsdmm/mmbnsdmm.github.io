@@ -59,7 +59,7 @@
     }
 </script>
 
-<style lang="sass">
+<style lang="stylus">
     .chatbox
         height: 100%
         background: #ccc

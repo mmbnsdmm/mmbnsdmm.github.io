@@ -23,7 +23,7 @@
     }
 </script>
 
-<style lang="sass">
+<style lang="stylus">
     #app
         font-family: 'Avenir', Helvetica, Arial, sans-serif
         -webkit-font-smoothing: antialiased

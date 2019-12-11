@@ -1,5 +1,7 @@
 {
   "apiDomain": "http://49.235.220.19:7003",
-  "lastVersion": "0.1.0",
-  "forceUpdate": false
+  "lastVersion": "0.1.1",
+  "forceUpdate": false,
+  "updateLog": "测试更新",
+  "appDownloadUrl": "http://49.235.220.19:7003/storage/apps/0.1.1/app-debug(2).apk"
 }

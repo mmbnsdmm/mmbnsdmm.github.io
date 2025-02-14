@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>YY故事汇</title>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/bootstrap/3.3.7/bootstrap.min.css">
     <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="static/bootstrap/3.3.7/bootstrap-theme.min.css">
     <!-- 站点 CSS 文件 -->
     <link rel="stylesheet" href="./css/index.css">
 </head>
@@ -38,22 +38,24 @@
                 <p>到2018年10月，由于很多人反应文章没有分类，不好找文章，故开发了续吧2，这个网站从2018年10月运行到了2020年年初，感谢贡献者上传了很多文章，但是令人厌烦的是很多人为了积分各种水，本人也没多少时间打理，故造成站内文章各种乱，另外随着读者越来越多，服务器压力也越来越大（本人租用的大米服务器配置并不高，并且到2020年10月就到期了），不足以支持较多人访问，页面各种卡顿，就有后面开发App前后端分离的想法</p>
                 <p>在2020年上半年开发出YY故事汇App，也就是续吧3，取消了积分功能，增加了入门申请</p>
                 <p>在2020年6月，由于本人对客户端开发并不擅长，入门申请功能各种重复文章，本人利用码云的<code>git pages</code>服务重新开发了YY故事汇，也就是续吧4</p>
-                <p>在2023年2月，重构了数据库和前端页面，并加入了支付提现模块，为作者提供了有偿内容产出业务，当前平台不收取任何中间费用</p>
+                <p>在2023年2月，重构了数据库和前端页面，并加入了支付提现模块，为作者提供了有偿内容产出业务，当前平台只收取一成作者的卖出收益</p>
+                <p>在2024年4月底，由于码云的pages服务异常，被迫使用了新的地址 {{ mainSite }}</p>
+                <p>在2025年1月，添加了微信支付支持、高级筛选、资源下载等新功能</p>
                 <p>由于本人的技术不成熟，上班族也没多少资源升级服务器，还有各种强制升级造成数据丢失，对此我对贡献者深表歉意，可能有人会觉都续吧死了，但我表示不，项目还会继续下去！</p>
                 <p>如果你觉得续吧不好，请安静离开，你没有资格谩骂一个默默无闻的劳动者，如果有什么建议，可以去APP，网站的留言区交流</p>
-                <p>最后感谢大家对本项目的支持，当前YY故事汇也就是续吧的最新地址是 <a href="http://mmbnsdmm.gitee.io/xuba4" target="_blank">http://mmbnsdmm.gitee.io/xuba4</a></p>
+                <p>最后感谢大家对本项目的支持，当前YY故事汇也就是续吧的最新地址是 <a :href="mainSite" target="_blank">{{ mainSite }}</a></p>
                 <p>
                     如果以上页面无法打开，请访问WEB端地址：
-                    <a href="http://xuba5f.bnsdmm.top" target="_blank">http://xuba5f.bnsdmm.top</a>
-                    <a href="http://bnsdmm.3vkj.club" target="_blank">http://bnsdmm.3vkj.club</a>
+                    <a v-for="(item, key) in backupSites" :key="key" :href="item" target="_blank">{{ item }}</a>
                 </p>
                 <h4>APP下载</h4>
-                <p>安卓: <a href="https://github.com/mmbnsdmm/mmbnsdmm.github.io/releases/download/xuba4.gitee.1.0.0/xuba4.gitee.apk" target="_blank">xuba4.apk</a></p>
-                <p>苹果(需要越狱): <a href="https://github.com/mmbnsdmm/mmbnsdmm.github.io/releases/download/xuba4.gitee.1.0.0/xuba4.gitee.ipa" target="_blank">xuba4.ipa</a></p>
-                <p>如果app无法下载，请进入地址<a href="https://gitee.com/yystory_1/yystory/releases/tag/xuba4.gitee.1.0.0">gitee release</a>下载</p>
+                <p>安卓: <a href="https://gitee.com/yystory_1/yystory/releases/download/5.0.0/xuba5f.bnsdmm.top.apk" target="_blank">xuba5.apk</a></p>
+                <p>苹果(需要越狱): <a href="https://gitee.com/yystory_1/yystory/releases/download/5.0.0/xuba5f.bnsdmm.top.mobileconfig" target="_blank">xuba5f.bnsdmm.top.mobileconfig</a></p>
+                <p>如果app无法下载，请进入地址<a href="https://gitee.com/yystory_1/yystory/releases/tag/5.0.0">gitee release</a>下载</p>
                 <h4>项目pages镜像站</h4>
-                <p>gitee：<a href="http://mmbnsdmm.gitee.io">http://mmbnsdmm.gitee.io</a></p>
-                <p>github：<a href="https://mmbnsdmm.github.io">https://mmbnsdmm.github.io</a></p>
+                <p v-for="(item, key) in descSites" :key="key">
+                    {{ item.name }}：<a :href="item.site">{{ item.site }}</a>
+                </p>
                 <h4>赞赏</h4>
                 <div class="row">
                     <div class="col-sm-12">如果你觉得不错就赞赏下吧</div>
@@ -86,15 +88,15 @@
 </div>
 <footer class="footer">
     <div class="container">
-        ©copyright <a href="http://mmbnsdmm.gitee.io" target="_blank">YY故事汇</a>
+        ©copyright <a href="http://xuba.bnsdmm.top" target="_blank">YY故事汇</a>
     </div>
 </footer>
 <!-- 最新的 vue 文件 -->
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+<script src="static/vue.2.6.12.min.js"></script>
 <!-- 最新的 jquery 文件 -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="static/jquery.3.5.1.min.js"></script>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<script src="static/bootstrap/3.3.7/bootstrap.min.js"></script>
 <!-- 站点 JS 文件 -->
 <script src="./js/index.js"></script>
 <script>
@@ -103,22 +105,49 @@
         data: function () {
             return {
                 blogroll: [
-                    {href: "http://139.196.95.183:6868", text: "Tig(已失效)", target: "_blank"},
-                    {href: "https://tig2.eu.org/", text: "Tig2", target: "_blank"},
+                    // {href: "http://139.196.95.183:6868", text: "Tig(已失效)", target: "_blank"},
+                    {href: "https://tig2.southeastasia.cloudapp.azure.com", text: "Tig2", target: "_blank"},
+                    {href: "https://tig2.086290.xyz", text: "Tig2备用", target: "_blank"},
                     {href: "http://rsahz.bnsdmm.top", text: "柔术爱好者", target: "_blank"},
-                    {href: "http://47.95.250.55:4321", text: "小说吧存档(已失效)", target: "_blank"},
-                    {href: "http://duzi.ml", text: "duzi.ml", target: "_blank"},
+                    // {href: "http://47.95.250.55:4321", text: "小说吧存档(已失效)", target: "_blank"},
+                    // {href: "http://duzi.ml", text: "duzi.ml", target: "_blank"},
                     {href: "https://bbs.fallenark.com/", text: "堕落方舟", target: "_blank"},
                     {href: "http://www.pixiv.net/", text: "pixiv", target: "_blank"},
-                    {href: "http://5aduzi.com/", text: "5aduzi(已失效)", target: "_blank"},
+                    // {href: "http://5aduzi.com/", text: "5aduzi(已失效)", target: "_blank"},
                     {href: "http://5duzi.com/", text: "平凡-5duzi", target: "_blank"},
-                    {href: "http://5aduqi.com/", text: "5aduqi(已失效)", target: "_blank"},
-                    {href: "https://mp.weixin.qq.com/s?__biz=MzI5MTEwODAzNw==&mid=503290156&idx=1&sn=9b3c33a338c957e34e39110fc028f96a&chksm=741e9c864369159065d956f33536f411a19714c63f2ebd44af1fb79eb568013e6d93fcf74afd&mpshare=1&scene=1&srcid=1210hE0XFG3ow4lL0OJhXsQc&sharer_sharetime=1607572020412&sharer_shareid=86b3dc63d8fe401ef5696a0edcf71d4c&key=b8392d370c8db9c0f34f1aa86a29593ca57e2c85ecd84370610ec56fc0c35f1060080d61152af3191adcda532b44eff8aa8222478b6e3989cbe44548387698d9ff8bfc995d96cefef1637d68cc227e0ae5883a995dd577f583e725628c16a8f1b9ddbc4f61785a5a6da12acef62d1d94e05355e991b2d535ecfda07d89100526&ascene=1&uin=ODAwMTEwNzk4&devicetype=Windows+Server+2016+x64&version=6300002f&lang=zh_CN&exportkey=Az32w227jOw56l0qw%2BpLmQ4%3D&pass_ticket=uun6cSHffbJdRPujTWd17dDRlKzrx2QuI0Ec35VCgOTPEdB%2BxET4lVChHK%2FRSDd5&wx_header=0", text: "【冬庭馆】图书馆(已失效)", target: "_blank"},
-                    {href: "https://mp.weixin.qq.com/s?__biz=MzI5MTEwODAzNw==&mid=503289978&idx=1&sn=1e776028e9ba46cac5e73c1b8ee6bea4&chksm=741e9dd0436914c64fa3b220d51c3f3839255f67a13dd9b702e6c2a5b2b1c2e4db51ee45a32f&scene=18&xtrack=1&key=6c68200de86109c5f04fb3f6bb9c2048af02e8df4dd4f9ffde98ad7ff97057a3fbaed812bdc1a80076a817c64f77a67b4ff371ea53581877bd64245f2c0fdcfab6925d0581770aa1d3fd7f70232b5a7210257a6fa5f0ac8d3a98252a38fc8217e10ddb6eb7239b6f60e445a8c15df0f333157618180d550076e4203ba5a5ec6b&ascene=1&uin=ODAwMTEwNzk4&devicetype=Windows+Server+2016+x64&version=6300002f&lang=zh_CN&exportkey=A4Dcs7s00Fz0suQn%2FJgg714%3D&pass_ticket=uun6cSHffbJdRPujTWd17dDRlKzrx2QuI0Ec35VCgOTPEdB%2BxET4lVChHK%2FRSDd5&wx_header=0", text: "冬庭馆后花园(已失效)", target: "_blank"}
+                    // {href: "http://5aduqi.com/", text: "5aduqi(已失效)", target: "_blank"},
+                    // {href: "https://mp.weixin.qq.com/s?__biz=MzI5MTEwODAzNw==&mid=503290156&idx=1&sn=9b3c33a338c957e34e39110fc028f96a&chksm=741e9c864369159065d956f33536f411a19714c63f2ebd44af1fb79eb568013e6d93fcf74afd&mpshare=1&scene=1&srcid=1210hE0XFG3ow4lL0OJhXsQc&sharer_sharetime=1607572020412&sharer_shareid=86b3dc63d8fe401ef5696a0edcf71d4c&key=b8392d370c8db9c0f34f1aa86a29593ca57e2c85ecd84370610ec56fc0c35f1060080d61152af3191adcda532b44eff8aa8222478b6e3989cbe44548387698d9ff8bfc995d96cefef1637d68cc227e0ae5883a995dd577f583e725628c16a8f1b9ddbc4f61785a5a6da12acef62d1d94e05355e991b2d535ecfda07d89100526&ascene=1&uin=ODAwMTEwNzk4&devicetype=Windows+Server+2016+x64&version=6300002f&lang=zh_CN&exportkey=Az32w227jOw56l0qw%2BpLmQ4%3D&pass_ticket=uun6cSHffbJdRPujTWd17dDRlKzrx2QuI0Ec35VCgOTPEdB%2BxET4lVChHK%2FRSDd5&wx_header=0", text: "【冬庭馆】图书馆(已失效)", target: "_blank"},
+                    // {href: "https://mp.weixin.qq.com/s?__biz=MzI5MTEwODAzNw==&mid=503289978&idx=1&sn=1e776028e9ba46cac5e73c1b8ee6bea4&chksm=741e9dd0436914c64fa3b220d51c3f3839255f67a13dd9b702e6c2a5b2b1c2e4db51ee45a32f&scene=18&xtrack=1&key=6c68200de86109c5f04fb3f6bb9c2048af02e8df4dd4f9ffde98ad7ff97057a3fbaed812bdc1a80076a817c64f77a67b4ff371ea53581877bd64245f2c0fdcfab6925d0581770aa1d3fd7f70232b5a7210257a6fa5f0ac8d3a98252a38fc8217e10ddb6eb7239b6f60e445a8c15df0f333157618180d550076e4203ba5a5ec6b&ascene=1&uin=ODAwMTEwNzk4&devicetype=Windows+Server+2016+x64&version=6300002f&lang=zh_CN&exportkey=A4Dcs7s00Fz0suQn%2FJgg714%3D&pass_ticket=uun6cSHffbJdRPujTWd17dDRlKzrx2QuI0Ec35VCgOTPEdB%2BxET4lVChHK%2FRSDd5&wx_header=0", text: "冬庭馆后花园(已失效)", target: "_blank"},
+                    {href: "https://xuba5.bnsdmm.top/others/friendly-link.php", text: "其他", target: "_blank"}
                 ],
                 contact: [
                     {k: "邮箱", v: "2507525589@qq.com"},
+                    {k: "微信", v: "dontsaysecret"},
                     {k: "QQ", v: "2507525589"}
+                ],
+                descSite: 'http://xuba.bnsdmm.top',
+                descSites: [
+                    {
+                        name: 'main',
+                        site: 'http://xuba.bnsdmm.top'
+                    },
+                    {
+                        name: 'github',
+                        site: 'https://mmbnsdmm.github.io'
+                    },
+                    {
+                        name: 'free.3v.do',
+                        site: 'http://bnsdmm.3vkj.vip'
+                    },
+                    {
+                        name: 'www.3v.do',
+                        site: 'http://yyss.bnsdmm.top'
+                    }
+                ],
+                mainSite: 'http://xuba5f.bnsdmm.top',
+                backupSites: [
+                    'http://bnsdmm.3vkj.vip/xuba5f',
+                    'http://yyss.bnsdmm.top/xuba5f'
                 ]
             }
         },

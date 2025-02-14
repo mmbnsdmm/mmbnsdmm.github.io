@@ -1,0 +1,6 @@
+/*!
+* Mui Player Javascript Library v1.8.1 @Professional edition
+* Date：2023-01-28
+* Released under GPL-3.0 license
+* https://muiplayer.js.org/
+*/
